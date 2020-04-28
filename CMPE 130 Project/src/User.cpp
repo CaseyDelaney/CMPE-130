@@ -8,11 +8,23 @@
 #include "User.h"
 
 User::User() {
-	// TODO Auto-generated constructor stub
-
+ID = 0;
+name = ' ';
+}
+User::User(double i, string n){
+	ID = i;
+	name = n;
 }
 
-User::~User() {
-	// TODO Auto-generated destructor stub
+void User::setID(double i){
+ID = i;
 }
-
+double User::getID(){
+return ID;
+}
+void User::setName(string n){
+	name = n;
+}
+string User::getName(){
+	return name;
+}

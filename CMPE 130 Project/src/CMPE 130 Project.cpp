@@ -7,7 +7,8 @@
 //============================================================================
 
 #include <iostream>
-
+#include "UserDB.h"
+#include "User.h"
 using namespace std;
 
 void userLogin();
@@ -19,6 +20,16 @@ void refundTickets();
 void editUserInfo();
 
 int main() {
+UserDB mydata;
+
+//testing////////////////////////
+double myID = 92920391992929;
+string name = "Casey Delaney";
+User casey(myID, name);
+
+mydata.insertUser(casey);
+mydata.printUserInfo(myID);
+/////////////////////////////////
 
 	// the following items choose a page
 	bool homePage = true; //
