@@ -8,30 +8,21 @@
 
 #include <iostream>
 #include "UserDB.h"
-#include "User.h"
+#include "UserProfile.h"
 using namespace std;
 
-void userLogin();
-void userRegistration();
-void userRegistration();
+bool userLogin(UserDB &DB);
+void userRegistration(UserDB &DB);
 void searchTrains();
 void buyTickets();
 void refundTickets();
 void editUserInfo();
 
+string currentUserEmail;
 int main() {
-UserDB mydata;
+	UserDB DB;
 
-//testing////////////////////////
-double myID = 92920391992929;
-string name = "Casey Delaney";
-User casey(myID, name);
-
-mydata.insertUser(casey);
-mydata.printUserInfo(myID);
-/////////////////////////////////
-
-	// the following items choose a page
+// the following items choose a page
 	bool homePage = true; //
 	bool loggedInPage = false;
 
@@ -41,8 +32,8 @@ mydata.printUserInfo(myID);
 	while (1) {
 		while (homePage) { //Menu
 
-			cout << "\nCmpe Train Company " << endl;
-			cout << "__________________________________________________\n"
+			cout << "\n\n\nCmpe Train Company " << endl;
+			cout << "******************************************"
 					<< endl;
 			cout << "Choose an option to continue:" << endl;
 			cout << "1. Login" << endl;
@@ -51,11 +42,18 @@ mydata.printUserInfo(myID);
 			cin >> homeMenuOption;
 
 			if (homeMenuOption == '1') {
-				userLogin(); //Calls userLogin function to allow user to login
-				homePage = false; //exits main page and goes to a logged in page
-				loggedInPage = true; //proceeds to a page where the user can access train scheduling functions
+				bool correctInfo = userLogin(DB); //Calls userLogin function to allow user to login
+
+				if(correctInfo){
+					homePage = false; //exits main page and goes to a logged in page
+					loggedInPage = true; //proceeds to a page where the user can access train scheduling functions
+				}
+				else{
+
+				}
+
 			} else if (homeMenuOption == '2') {
-				userRegistration(); //allows user to make a new profile
+				userRegistration(DB); //allows user to make a new profile
 				//stay within homeMenu and user must log into their account after registration
 			} else if (homeMenuOption == '3') {
 				cout << "Shutting down program" << endl;
@@ -68,8 +66,8 @@ mydata.printUserInfo(myID);
 
 		}
 		while (loggedInPage) {
-			cout << "\nUser is now logged in." << endl;
-			cout << "__________________________________________________\n"
+			cout << "\n\nUser is now logged in." << endl;
+			cout << "******************************************\n"
 					<< endl;
 
 			cout << "What would you like to do next?" << endl;
@@ -101,14 +99,35 @@ mydata.printUserInfo(myID);
 	return 0;
 }
 
-void userLogin() {
-	//TODO: Create Login Function
-	cout << "Logged in" << endl;
+bool userLogin(UserDB &DB) {
+	string password;
+	cout<<"Please enter your email address:\n"<<endl;
+	cin >>currentUserEmail;
+	cout<<"Please enter your password:\n"<<endl;
+	cin >>password;
+
+	return DB.checkUserInfo(currentUserEmail, password);
 	;
 }
 
-void userRegistration() {
-	//TODO: Create User Registration Function
+void userRegistration(UserDB &DB){
+	string fName;
+	string lName;
+	string email;
+	string password;
+
+	cout << "\n\nUser Registration Form" << endl;
+	cout << "******************************************\n";
+	cout << "Please enter your First Name:"<<endl;
+	cin >>fName;
+	cout << "Please enter your Last Name:"<<endl;
+	cin >>lName;
+	cout <<"Please enter your email address"<<endl;
+	cin >> email;
+	cout <<"Please enter a password:"<<endl;
+	cin >>password;
+	UserProfile newUser(fName, lName, email, password);
+	DB.insertUser(newUser);
 }
 
 void searchTrains() {

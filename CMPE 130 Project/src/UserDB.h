@@ -7,20 +7,20 @@
 #include <iostream>
 using namespace std;
 
-#include "User.h"
+#include "UserProfile.h"
 #ifndef USERDB_H_
 #define USERDB_H_
-const int MAXSIZE = 100000;
+const int MAXSIZE = 1000;
 class UserDB {
 public:
 	UserDB();
 
-	void insertUser(User U);
-	void printUserInfo(int ID);
+	void insertUser(UserProfile U);
+	bool checkUserInfo(string email, string password);
 
-	User database[MAXSIZE];
-	int statusTable[MAXSIZE];
-	int hashFunction(int ID);
+	UserProfile database[MAXSIZE];
+	int statusTable[MAXSIZE]; // -1 = deleted, 0 = empty; 1 = full
+	int hashFunction(string email);
 };
 
 #endif /* USERDB_H_ */
