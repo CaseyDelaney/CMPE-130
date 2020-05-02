@@ -1,0 +1,17 @@
+
+San Francisco, 2020, 5, 17, 6, 15
+22nd Street, 2020, 5, 8, 8, 30
+Bayshore, 2020, 5, 9, 7, 0
+South San Francisco, 2020, 5, 22, 13, 15
+San Bruno, 2020, 5, 12, 8, 30
+Millbrae Transit Center, 2020, 5, 9, 12, 0
+Broadway, 2020, 5, 8, 9, 15
+Burlingame, 2020, 5, 15, 15, 30
+San Mateo, 2020, 5, 19, 17, 0
+Hayward Park, 2020, 5, 13, 19, 15
+Hillsdale, 2020, 5, 20, 8, 30
+Belmont, 2020, 5, 6, 9, 0
+San Carlos, 2020, 5, 19, 10, 15
+Redwood City, 2020, 5, 20, 11, 30
+San Francisco, 2020, 6, 17, 6, 15
+San Francisco, 2020, 7, 17, 6, 15

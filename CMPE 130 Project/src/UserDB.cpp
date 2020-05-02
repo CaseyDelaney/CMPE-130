@@ -94,6 +94,7 @@ if (statusTable[index] == 1) { //User is found
 	cout << "Error with new user function.";
 	return false;
 }
+cout<<"Error with Login"<<endl;
 return false;
 }
 int UserDB::hashFunction(string email) {

@@ -9,18 +9,25 @@
 #include <iostream>
 #include "UserDB.h"
 #include "UserProfile.h"
+#include "TrainDB.h"
 using namespace std;
 
 bool userLogin(UserDB &DB);
 void userRegistration(UserDB &DB);
-void searchTrains();
+void searchTrains(TrainDB &d);
 void buyTickets();
 void refundTickets();
 void editUserInfo();
 
 string currentUserEmail;
 int main() {
+	//creating user DB and Train DB
 	UserDB DB;
+	TrainDB trainDataBase;
+	//Loading Train Schedules from txt file
+	trainDataBase.loadFile("trainSchedules.txt");
+	//trainDataBase.printAll();
+
 
 // the following items choose a page
 	bool homePage = true; //
@@ -66,7 +73,7 @@ int main() {
 
 		}
 		while (loggedInPage) {
-			cout << "\n\nUser is now logged in." << endl;
+			cout << "\n\nStatus: Logged In" << endl;
 			cout << "******************************************\n"
 					<< endl;
 
@@ -80,7 +87,7 @@ int main() {
 			cin >> loggedInMenuOption;
 
 			if (loggedInMenuOption == '1') {
-				searchTrains(); //search for available train rides
+				searchTrains(trainDataBase); //search for available train rides
 			} else if (loggedInMenuOption == '2') {
 				buyTickets(); //Allows user to buy train tickets
 			} else if (loggedInMenuOption == '3') {
@@ -130,8 +137,8 @@ void userRegistration(UserDB &DB){
 	DB.insertUser(newUser);
 }
 
-void searchTrains() {
-
+void searchTrains(TrainDB &d) {
+d.printAll();
 }
 void buyTickets() {
 
