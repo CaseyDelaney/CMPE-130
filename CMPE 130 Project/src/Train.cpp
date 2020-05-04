@@ -30,7 +30,15 @@ string Train::getDestination() {
 void Train::printTrainInfo() {
 	cout << "Destination: " << destination << endl;
 	for (int j = 0; j < i; j++) {
-		cout << "\t";
+		cout << "\t"<<j + 1<<". ";
 		T[j].printTime();
 	}
+}
+int Train::getI(){
+	return i;
+}
+void Train::buySingleTrain(int i){
+	cout << "Destination: " << destination << " for ";
+	T[i].printTime();
+	T[i].buyTicket();
 }

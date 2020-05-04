@@ -26,6 +26,8 @@ public:
 	void loadFile(string filename);
 	void inputDestination(string des, Time t);
 	void printAll();
+	int searchDestination(string des);
+
 private:
 	int numberOfDestinations;
 };

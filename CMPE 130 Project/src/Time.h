@@ -20,7 +20,10 @@ public:
 	int day;
 	int hour;
 	int minute;
+	int ticketsLeft;
 	void printTime();
+	void buyTicket();
+
 };
 
 #endif /* TIME_H_ */

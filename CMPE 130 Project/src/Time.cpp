@@ -13,6 +13,7 @@ Time::Time() {
 	day = 0;
 	hour = 0;
 	minute = 0;
+	ticketsLeft = 40;
 }
 
 Time::Time(int y, int m, int d, int h, int min) {
@@ -21,6 +22,7 @@ Time::Time(int y, int m, int d, int h, int min) {
 	day = d;
 	hour = h;
 	minute = min;
+	ticketsLeft = 40;
 }
 
 void Time::printTime(){
@@ -74,4 +76,13 @@ void Time::printTime(){
 			else{
 			cout<<minute<<endl;
 			}
+}
+void Time::buyTicket(){
+	if(ticketsLeft > 0){
+	ticketsLeft--;
+	cout <<"You purchased one ticket."<<endl;
+	}
+	else{
+		cout<<"Sorry. There are no more tickets left for this train ride."<<endl;
+	}
 }

@@ -15,7 +15,7 @@ using namespace std;
 bool userLogin(UserDB &DB);
 void userRegistration(UserDB &DB);
 void searchTrains(TrainDB &d);
-void buyTickets();
+void buyTickets(TrainDB &d);
 void refundTickets();
 void editUserInfo();
 
@@ -80,21 +80,18 @@ int main() {
 			cout << "What would you like to do next?" << endl;
 			cout << "1. Search for a train schedule" << endl; //Allow user to input information and find the closest match
 			cout << "2. Buy Tickets" << endl; //Search for a train schedule and then allow user to buy a ticket
-			cout << "3. Ticket Refund" << endl; //User can cancel train ticket
-			cout << "4. Edit Account Information" << endl;
-			cout << "5. Logout" << endl;
+			cout << "3. Edit Account Information" << endl;
+			cout << "4. Logout" << endl;
 
 			cin >> loggedInMenuOption;
 
 			if (loggedInMenuOption == '1') {
-				searchTrains(trainDataBase); //search for available train rides
+				searchTrains(trainDataBase); //Display all available train rides
 			} else if (loggedInMenuOption == '2') {
-				buyTickets(); //Allows user to buy train tickets
+				buyTickets(trainDataBase); //Allows user to buy train tickets
 			} else if (loggedInMenuOption == '3') {
-				refundTickets(); //Cancel train ticket
-			} else if (loggedInMenuOption == '4') {
 				editUserInfo();
-			} else if (loggedInMenuOption == '5') {
+			} else if (loggedInMenuOption == '4') {
 				cout << "You are now logged out.\n\n" << endl;
 				homePage = true;
 				loggedInPage = false;
@@ -140,8 +137,25 @@ void userRegistration(UserDB &DB){
 void searchTrains(TrainDB &d) {
 d.printAll();
 }
-void buyTickets() {
-
+void buyTickets(TrainDB &d) {
+	string destination;
+	cout <<"Please enter a destination:"<<endl;
+	cin.ignore();
+	getline (cin, destination);
+	int valid = d.searchDestination(destination);
+	if(valid == 1000){
+		return;
+	}
+	cout<<"Choose the number of which train you would like to pick:";
+	int choice = 0;
+	cin >> choice;
+	if(choice > d.DB[valid].getI() ||choice < 1){
+		cout<<"\n\nError. "<<choice <<" is not a valid option"<<endl;
+	}
+	else{
+cout<<"\n\n\nYou have bought a ticket at ";
+		d.DB[valid].buySingleTrain(choice - 1);
+	}
 }
 void refundTickets() {
 

@@ -58,3 +58,15 @@ void TrainDB::printAll(){
 		}
 	}
 }
+int TrainDB::searchDestination(string des){
+	for (int i = 0; i < trainMAXSIZE; i++) {
+			if (DB[i].getDestination() == des) {
+				DB[i].printTrainInfo();
+			return i;
+		}
+	}
+				cout<<"No train destinations matched the location you gave. "
+						"\nPlease search for available train schedules first."<<endl;
+				return 1000;
+
+}

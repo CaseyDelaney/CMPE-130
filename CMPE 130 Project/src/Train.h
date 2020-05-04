@@ -20,6 +20,8 @@ public:
 	void insertTrainTime(Time T);
 	string getDestination();
 	void printTrainInfo();
+	int getI();
+	void buySingleTrain(int i);
 
 private:
 	string destination;
