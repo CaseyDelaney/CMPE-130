@@ -31,6 +31,7 @@ public:
 	int partition(int low, int high);
 	friend bool operator <(Train a, Train b);
 	void quickSort(int low, int high);
+	int binarySearch(int l, int r, string x);
 
 private:
 	int numberOfDestinations;

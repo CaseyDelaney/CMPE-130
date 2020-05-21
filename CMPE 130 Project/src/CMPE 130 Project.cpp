@@ -152,7 +152,6 @@ void buyTickets(TrainDB &d) {
 		cout<<"\n\nError. "<<choice <<" is not a valid option"<<endl;
 	}
 	else{
-cout<<"\n\n\nYou have bought a ticket at ";
 		d.DB[valid].buySingleTrain(choice - 1);
 	}
 }

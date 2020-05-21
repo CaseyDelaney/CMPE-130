@@ -59,18 +59,39 @@ void TrainDB::printAll(){
 	}
 }
 int TrainDB::searchDestination(string des){
-	for (int i = 0; i < trainMAXSIZE; i++) {
-			if (DB[i].getDestination() == des) {
-				DB[i].printTrainInfo();
-			return i;
-		}
-	}
-				cout<<"No train destinations matched the location you gave. "
-						"\nPlease search for available train schedules first."<<endl;
-				return 1000;
+//	for (int i = 0; i < trainMAXSIZE; i++) {
+//			if (DB[i].getDestination() == des) {
+//				DB[i].printTrainInfo();
+//			return i;
+//		}
+//	}
+
+	return binarySearch(0,numberOfDestinations - 1, des);;
+
 
 }
+int TrainDB::binarySearch(int l, int r, string x)
+{
+    if (r >= l) {
+        int mid = l + (r - l) / 2;
 
+        // If the element is present at the middle
+        // itself
+        if (DB[mid].getDestination() == x) {
+            DB[mid].printTrainInfo();
+            return mid;
+        }
+        // If element is smaller than mid, then
+        // it can only be present in left subarray
+        if (DB[mid].getDestination() > x) {
+            return binarySearch(l, mid - 1, x);
+        }
+        else{
+        return binarySearch(mid + 1, r, x);
+        }
+    }
+    return 1000;
+}
 bool operator < (Train a, Train b){
 	if(a.getDestination() < b.getDestination()){
 		cout <<"Train a < b";
@@ -108,6 +129,5 @@ void TrainDB::quickSort(int low, int high) //for
         int pi = partition(low, high);
         quickSort(low, pi - 1);
         quickSort(pi + 1, high);
-        cout <<"sorting"<<low<<" and "<<high <<endl;
     }
 }
