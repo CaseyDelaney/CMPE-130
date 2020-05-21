@@ -49,7 +49,7 @@ void TrainDB::inputDestination(string des, Time t) {
 	else{
 		cout <<"Error. Too many train locations."<<endl;
 	}
-
+	quickSort(0,numberOfDestinations-1);
 }
 void TrainDB::printAll(){
 	for(int i = 0; i< trainMAXSIZE; i++){
@@ -69,4 +69,45 @@ int TrainDB::searchDestination(string des){
 						"\nPlease search for available train schedules first."<<endl;
 				return 1000;
 
+}
+
+bool operator < (Train a, Train b){
+	if(a.getDestination() < b.getDestination()){
+		cout <<"Train a < b";
+		return true;
+	}
+	else	return false;
+
+}
+void TrainDB::swap(Train &a, Train &b)
+{
+    Train temp = a;
+    a = b;
+    b = temp;
+}
+int TrainDB::partition (int low, int high)
+{
+    Train pivot = DB[high]; // pivot
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++)
+    {
+        if (DB[j] < pivot)
+        {
+            i++;
+           swap(DB[i], DB[j]);
+        }
+    }
+    swap(DB[i + 1], DB[high]);
+    return (i + 1);
+}
+void TrainDB::quickSort(int low, int high) //for
+{
+    if (low < high)
+    {
+        int pi = partition(low, high);
+        quickSort(low, pi - 1);
+        quickSort(pi + 1, high);
+        cout <<"sorting"<<low<<" and "<<high <<endl;
+    }
 }

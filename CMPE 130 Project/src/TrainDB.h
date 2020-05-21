@@ -27,6 +27,10 @@ public:
 	void inputDestination(string des, Time t);
 	void printAll();
 	int searchDestination(string des);
+	void swap(Train &a, Train &b);
+	int partition(int low, int high);
+	friend bool operator <(Train a, Train b);
+	void quickSort(int low, int high);
 
 private:
 	int numberOfDestinations;

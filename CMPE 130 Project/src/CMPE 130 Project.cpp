@@ -78,7 +78,7 @@ int main() {
 					<< endl;
 
 			cout << "What would you like to do next?" << endl;
-			cout << "1. Search for a train schedule" << endl; //Allow user to input information and find the closest match
+			cout << "1. Look at available train schedules" << endl; //Allow user to input information and find the closest match
 			cout << "2. Buy Tickets" << endl; //Search for a train schedule and then allow user to buy a ticket
 			cout << "3. Edit Account Information" << endl;
 			cout << "4. Logout" << endl;
@@ -99,7 +99,6 @@ int main() {
 		}
 
 	}
-	//cout <<"test"<<endl;////////////
 	return 0;
 }
 
@@ -111,7 +110,7 @@ bool userLogin(UserDB &DB) {
 	cin >>password;
 
 	return DB.checkUserInfo(currentUserEmail, password);
-	;
+
 }
 
 void userRegistration(UserDB &DB){
